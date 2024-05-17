@@ -47,7 +47,7 @@ header {
 }
 
 header.sticky {
-    padding: 5px 10px;
+    padding: 15px 10px;
     background-color: #040a18;
 }
 
@@ -155,8 +155,6 @@ header.sticky ul li a:hover {
 .menu-toggle input:checked ~ span:nth-child(4) {
     transform: rotate(-45deg) translate(-1px, 1px);
 }
-
-
 /*Menu*/
 
 @media screen and (max-width: 1055px) {
@@ -417,6 +415,51 @@ header.sticky ul li a:hover {
     
 }
 /* Blog */
+
+/* education */
+.education-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: whitesmoke;
+    font-size: 2.4rem;
+    text-transform: capitalize;
+}
+
+#education {
+    border-collapse: collapse;
+    width: 100%;
+    color: whitesmoke;
+    background-color: #303540;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#education td, #education th {
+    border: 1px solid #2c4881;
+    padding: 8px;
+}
+
+#education tr:nth-child(even){
+    background-color: #212f4e;
+}
+
+#education tr:hover {
+    background-color: #e2c8ab;
+}
+
+#education th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #040a18;
+    color: whitesmoke;
+}
+
+/* education */
+
 
 /* Skills */
 .skills{

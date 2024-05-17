@@ -1,9 +1,19 @@
+<?php
+// Connect to the database
+$db = mysqli_connect("localhost", "root", "", "portofolio");
+
+// Retrieve data from the education table
+$data = mysqli_query($db, "SELECT * FROM education");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="style/styles.css">
+    <title>Miracle Sumajow Portofolio</title>
 </head>
 <body>
     <header>
@@ -13,9 +23,10 @@
                     <li><a href="#A">Home</a></li>
                     <li><a href="#A1">About</a></li>
                     <li><a href="#A2">Article</a></li>
-                    <li><a href="#A3">Skills</a></li>
-                    <li><a href="#A4">Gallery</a></li>
-                    <li><a href="#A5">Contact</a></li>
+                    <li><a href="#A3">Education</a></li>
+                    <li><a href="#A4">Skills</a></li>
+                    <li><a href="#A5">Gallery</a></li>
+                    <li><a href="#A6">Contact</a></li>
                 </ul>
 
                 <div class="menu-toggle">
@@ -61,9 +72,9 @@
     <br><br>
 
     <!--Article-->
-    <section class="blog">
+    <section class="blog" id="A2">
         <div class="blog-heading">
-            <h1 class="reveal" id="A2">Article</h1>
+            <h1 class="reveal">Article</h1>
         </div>  <br><br>
         
         <div class="blog-container">
@@ -135,9 +146,34 @@
     <!--Article-->
 
     <br><br>
+    
+    <!-- Education -->
+    <section class="education" id="A3">
+        <div class="education-heading reveal">
+            <h2>Education</h2>
+        </div>
+
+        <br><br>
+
+    <table id="education" class="reveal">
+        <tr>
+            <th>Studi</th>
+            <th>Tahun ajaran</th>
+        </tr>
+
+        <?php while ($row = mysqli_fetch_array($data) ): ?>
+        <tr>
+            <td><?= $row["school"]; ?></td>
+            <td><?= $row["school_year"]; ?></td>
+        </tr>
+        <?php endwhile; ?>
+    </table>
+    </section>
+    <!-- Education -->
+
 
     <!--Skills-->
-    <section class="skills" id="A3">
+    <section class="skills" id="A4">
         <div class="skills-heading reveal">
             <h2>Skills</h2>
         </div>
@@ -194,11 +230,12 @@
             </div>
         </div>
     </section>
-
     <!--Skills-->
 
+    <br><br>
+
     <!--Gallery-->
-    <section class="gallery" id="A4">
+    <section class="gallery" id="A5">
     <div class="gallery-heading reveal">
         <h2>Gallery</h2>
     </div>
@@ -311,13 +348,13 @@
     <br>
 
     <!--Contact-->
-    <section class="contact" id="A5">
+    <section class="contact" id="A6">
         <div class="contact-heading reveal">
             <h2>Contact Me!</h2>
         </div>
 
         <br><br>
-        
+
         <p class="contact-text reveal">
             If you have any questions or would like to get in touch with me, 
             please feel free to contact me using the information below. <br><br>
@@ -366,9 +403,10 @@
                     <li><a href="#A">Home</a></li>
                     <li><a href="#A1">About</a></li>
                     <li><a href="#A2">Article</a></li>
-                    <li><a href="#A3">Skills</a></li>
-                    <li><a href="#A4">Gallery</a></li>
-                    <li><a href="#A5">Contact</a></li>
+                    <li><a href="#A3">Education</a></li>
+                    <li><a href="#A4">Skills</a></li>
+                    <li><a href="#A5">Gallery</a></li>
+                    <li><a href="#A6">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -379,5 +417,5 @@
     <!--Footer-->
 
 </body>
-<script src="script/javascript.js"></script>  
+<script src="script/scripts.js"></script>  
 </html>
