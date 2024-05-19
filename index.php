@@ -1,9 +1,9 @@
 <?php
-// Connect to the database
-$db = mysqli_connect("localhost", "root", "", "portofolio");
 
-// Retrieve data from the education table
-$data = mysqli_query($db, "SELECT * FROM education");
+require 'function/functions.php';
+$education = query("SELECT * FROM education");
+$blog = query("SELECT * FROM blog");
+$gallery = query("SELECT * FROM gallery");
 
 ?>
 
@@ -78,69 +78,19 @@ $data = mysqli_query($db, "SELECT * FROM education");
         </div>  <br><br>
         
         <div class="blog-container">
+
+        <?php foreach ( $blog as $blog_row ): ?>
             <article class="blog-box reveal">
                 <div class="blog-img">
-                <img src="images/Chalisthenic.jpg" alt="Calisthenics">
+                <img src="images/<?= $blog_row["gambar"]; ?>" alt="<?= $blog_row["keterangan"]; ?>">
                 </div>
-                <h2>Olahraga Kalistenik</h2>
+                <h2><?= $blog_row["judul"]; ?></h2>
                 <div class="blog-text">
-                    <p>
-                        Calisthenics adalah metode latihan fisik yang menggunakan berat badan sendiri sebagai resistensi untuk meningkatkan kekuatan, kelincahan, dan fleksibilitas tubuh. 
-                        Gerakan-gerakan dasar seperti pull-up, push-up, squat, dan sit-up merupakan bagian integral dari latihan ini. 
-                        Kelebihan utama dari calisthenics adalah fleksibilitasnya dalam hal lokasi dan peralatan, sehingga dapat dilakukan di mana saja tanpa memerlukan peralatan khusus. 
-                        Latihan calisthenics tidak hanya membangun otot, tetapi juga meningkatkan keseimbangan dan koordinasi tubuh, sehingga cocok untuk pemula maupun mereka yang telah berpengalaman dalam kebugaran fisik.<br><br>
-
-                        Selain itu, calisthenics juga menawarkan variasi latihan yang luas, mulai dari level dasar hingga level yang lebih tinggi. 
-                        Ini membuatnya menjadi pilihan yang menarik bagi banyak orang yang ingin meningkatkan kebugaran fisik mereka tanpa perlu peralatan mahal atau keanggotaan di gym. 
-                        Dengan latihan yang konsisten, calisthenics dapat membantu meningkatkan kekuatan secara keseluruhan.
-                        Latihan calisthenics juga dapat dikombinasikan dengan elemen senam dan akrobatik, menciptakan latihan yang tidak hanya bermanfaat secara fisik tetapi juga memberikan aspek seni dalam gerakan tubuh. 
-                    </p>
-                    <a href="https://rey.id/blog/kesehatan/hidup-sehat/calisthenics-adalah/">Read More</a>
+                    <p><?= $blog_row["teks"]; ?></p>
+                    <a href="<?= $blog_row["hypertext"]; ?>">Read More</a>
                 </div>
             </article><br>
-            
-            <article class="blog-box reveal">
-                <div class="blog-img">
-                    <img src="images/Smartphone.jpg" alt="Smartphone">
-                </div>
-                <h2>Smartphone</h2>
-                <div class="blog-text">
-                    <p>
-                        Smartphone telah menjadi salah satu inovasi teknologi paling berpengaruh dalam beberapa dekade terakhir. 
-                        Dengan kemampuannya yang luar biasa, smartphone telah mengubah cara kita berkomunikasi, bekerja, bermain, dan bahkan belajar. 
-                        Dibandingkan dengan telepon genggam konvensional, smartphone menawarkan lebih dari sekadar panggilan dan pesan teks. 
-                        Mereka merupakan pusat komputasi mini yang memungkinkan kita mengakses internet, menjalankan aplikasi canggih, dan mengambil foto dan video berkualitas tinggi. 
-                        Fitur-fitur ini telah mengubah cara kita menjalani kehidupan sehari-hari, membawa koneksi dan informasi ke ujung jari kita.<br><br>
-    
-                        Namun, di balik segala kemudahan yang ditawarkan, teknologi smartphone juga menghadirkan tantangan baru. 
-                        Ketergantungan pada smartphone telah menjadi masalah tersendiri, dengan banyak orang merasa sulit untuk memisahkan diri dari perangkat ini. 
-                        Selain itu, keamanan dan privasi data juga menjadi perhatian utama, mengingat smartphone menyimpan banyak informasi pribadi dan sensitif. 
-                        Meskipun demikian, tidak dapat dipungkiri bahwa smartphone telah mengubah cara kita berinteraksi dengan dunia, dan terus menjadi salah satu inovasi teknologi yang paling berpengaruh dalam sejarah.
-                    </p>
-                    <a href="https://otatik.limapuluhkotakab.go.id/auth/isiartikel/27?judul=Pengertian%20Smartphone%20%E2%80%93%20Sejarah,%20Perkembangan,%20Manfaat,">Read More</a>
-                </div>
-            </article><br>
-
-            <article class="blog-box reveal">
-                <div class="blog-img">
-                    <img src="images/Unsrat.jpg" alt="Universitas Sam Ratulangi">
-                </div>
-                <h2>Universitas Sam Ratulangi</h2>
-                <div class="blog-text">
-                    <p>
-                        Universitas Sam Ratulangi merupakan salah satu perguruan tinggi Indonesia yang berlokasi di Kota Manado, Sulawesi utara.
-                        Universitas ini mengambil namanya dari seorang toko pahlawan nasional <abbr title="Dr. Gerungan Saul Samuel Jacob Ratulangi">Dr. G.S.S.J Ratulangi</abbr>.
-                        Dr. Ratulangi menjunjung sebuah falsafah <q>Si Tou Timou Tumou Tou</q> yang berarti manusia baru dapat disebut sebagai manusia, jika sudah dapat memanusiakan manusia.
-                        Kampus ini mengharapkan falsafah tersebut untuk menjadi landasan bagi setiap insan yang ada pada kampus ini.<br><br>
-                
-                        Universitas Sam Ratulangi memiliki 11 fakultas dan 1 program sarjana. Dengan berkembangnya zaman, Universitas Sam Ratulangi dahulu dikenal sebagai Universitas Pinaesaan yang hanya memiliki 1 fakultas yaitu fakultas hukum.
-                        Dari Universitas Pinaesaan yang bersifat swasta, terbentuklah Perguruan Tinggi Manado yang memiliki 4 fakultas yaitu fakultas hukum, ekonomi, sastra, dan tatapraja.
-                        Kemudian Perguruan Tinggi Manado mengubah namanya menjadi Universitas Sulawesi Utara-Tengah dengan adanya 5 fakultas yaitu fakultas hukum, ekonomi, kedokteran, pertanian, dan keguruan dan ilmu pendidikan.
-                        Setelah perubahan nama tersebut, diubah lagi Universitas Sulawesi Utara-Tengah menjadi Universitas Sam Ratulangi seperti yang kita kenal sekarang.
-                    </p>
-                    <a href="https://www.unsrat.ac.id/profil-unversitas/">Read More</a>
-                </div>
-            </article>
+        <?php endforeach; ?>
         </div>
     </section>  
     <!--Article-->
@@ -161,12 +111,12 @@ $data = mysqli_query($db, "SELECT * FROM education");
             <th>Tahun ajaran</th>
         </tr>
 
-        <?php while ($row = mysqli_fetch_array($data) ): ?>
+        <?php foreach ( $education as $edu_row ): ?>
         <tr>
-            <td><?= $row["school"]; ?></td>
-            <td><?= $row["school_year"]; ?></td>
+            <td><?= $edu_row["school"]; ?></td>
+            <td><?= $edu_row["school_year"]; ?></td>
         </tr>
-        <?php endwhile; ?>
+        <?php endforeach; ?>
     </table>
     </section>
     <!-- Education -->
@@ -242,105 +192,16 @@ $data = mysqli_query($db, "SELECT * FROM education");
 
     <br><br>
 
+    <?php foreach ( $gallery as $gal_row ): ?>
     <div class="responsive reveal">
         <div class="gallery">
-            <img src="images/Dog1.jpg" alt="Picture of a dog">
+            <img src="images/<?= $gal_row["gambar"]; ?>" alt="<?= $gal_row["nama"]; ?>">
                 <div class="desc">
-                    <div class="text">Picture of a dog</div>
+                    <div class="text"><?= $gal_row["nama"]; ?></div>
                 </div>
         </div>
       </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Dog2.jpg" alt="Picture of a dog">
-                <div class="desc">
-                    <div class="text">Picture of a dog</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Dog3.jpg" alt="Picture of a dog">
-                <div class="desc">
-                    <div class="text">Picture of a dog</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Dog4.jpg" alt="Picture of a dog">
-                <div class="desc">
-                    <div class="text">Picture of a dog</div>
-                </div>
-        </div>
-        <br>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Dog5.jpg" alt="Picture of a dog">
-                <div class="desc">
-                    <div class="text">Picture of a dog</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Dog6.jpg" alt="Picture of a dog">
-                <div class="desc">
-                    <div class="text">Picture of a dog</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Cat1.jpg" alt="Picture of a cat">
-                <div class="desc">
-                    <div class="text">Picture of a cat</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Cat2.jpg" alt="Picture of a cat">
-                <div class="desc">
-                    <div class="text">Picture of a cat</div>
-                </div>
-        </div>
-        <br>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Cat3.jpg" alt="Picture of a cat">
-                <div class="desc">
-                    <div class="text">Picture of a cat</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Cat4.jpg" alt="Picture of a cat">
-                <div class="desc">
-                    <div class="text">Picture of a cat</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Cat5.jpg" alt="Picture of a cat">
-                <div class="desc">
-                    <div class="text">Picture of a cat</div>
-                </div>
-        </div>
-      </div>
-      <div class="responsive reveal">
-        <div class="gallery">
-            <img src="images/Cat6.jpg" alt="Picture of a cat">
-                <div class="desc">
-                    <div class="text">Picture of a cat</div>
-                </div>
-        </div>
-      </div>
-
+    <?php endforeach; ?>
       <div class="clearfix"></div>
     </section>
     <!--Gallery-->
